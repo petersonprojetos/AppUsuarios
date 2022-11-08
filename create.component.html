@@ -1,0 +1,230 @@
+<div class="container mt-5">
+
+    <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div *ngIf="sucessmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{sucessmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+                            <!---->
+    <form [formGroup]="userForm" (ngSubmit)="userSubmit()" novalidate >
+        
+        <div class="col-lg-4">
+            Nome
+            <input type="text" class="form-control" formControlName="nome" placeholder="Nome"> 
+        </div>
+        
+        <div class="col-lg-4">
+            Login
+            <input type="text" class="form-control" formControlName="login" placeholder="Login"> 
+        </div>
+
+        <div class="col-lg-4">
+            CPF
+            <input type="text" class="form-control" formControlName="cpf" placeholder="CPF"> 
+        </div>
+
+        <div class="col-lg-4">
+            Email
+            <input type="text" class="form-control" formControlName="email" placeholder="Email"> 
+        </div>
+
+        <div class="col-lg-4">
+            Senha
+            <input type="text" class="form-control" formControlName="senha" placeholder="Senha"> 
+        </div>
+
+        <br>
+        <div>
+            Bloqueado
+            <input type="checkbox" value="bloqueado"> 
+        </div>
+        
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label class="col-xs-4 col-form-label control-label">Perfil de usuário</label>
+                <div class="controls col-xs-8">
+
+                    <select class="form-select" (change)="selecionar($event)">
+                        <option *ngFor="let n of option"> 
+                            {{n.name}}
+                        </option>
+                    </select>
+
+                    <br>
+
+                       
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <button type="button" class="btn btn-danger btn-sm" (change)="aplicar($event)">Aplicar</button>
+        </div>
+
+    
+        <hr>
+
+        <div id="informacoesGerais">
+            <h3 style="color: #C63131">Sistemas</h3>
+        </div>
+
+        <h4 class="span-cadastro">Cadastro</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Cadastro; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Auditoria Concorrente</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of AuditoriaConcorrente; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Pagamento</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Pagamento; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Relatórios BI</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of RelatorioBI; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Credenciamento</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Credenciamento; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Atenção Integral a Saúde</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of AIS; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Core</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Core; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Relacionamento</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Relacionamento; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Relatórios</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Relatorios; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Cobrança</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Cobranca; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Setup</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Setup; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Análise de Contas</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of AnaliseDeContas; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Autorização</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Autorizacao; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Atendimento</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Atendimento; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Editor de Regras</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of EditorDeRegras; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+        <h4 class="span-cadastro">Faturamento</h4>
+        <strong>Papeis</strong>
+        <div *ngFor="let Perfil of Faturamento; let i=index">
+            <label> 
+                <input type="checkbox" [value]="Perfil.value" (change)="onCheckboxChange($event)">
+                {{Perfil.name}}
+            </label>
+        </div>
+
+
+        <div class="col-lg-4 mt-2">
+            <button type="submit" value="submit" class="btn btn-primary btn-sm">Criar</button>
+        </div>
+
+    </form>
+</div>

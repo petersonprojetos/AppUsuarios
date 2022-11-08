@@ -21,7 +21,39 @@ export class CreateComponent implements OnInit {
   }
 
 
-//CHECKBOXES DOS PERFIS
+  //select 
+  option: Array<any> = [
+    {name: " ", value:0},
+    {name:"Cadastro", value:1},
+    {name:"Auditoria Concorrente", value:2},
+    {name:"Pagamento", value:3},
+    {name:"Relatorios BI", value:4},
+    {name:"Credenciamento", value:5},
+    {name:"AIS", value:6},
+    {name:"Core", value:7},
+    {name:"Relacionamento", value:8},
+    {name:"Relatorios", value:9},
+    {name:"Cobranca", value:10},
+    {name:"Setup", value:11},
+    {name:"Analise De Contas", value:12},
+    {name:"Autorização", value:13},
+    {name:"Atendimento", value:14},
+    {name:"Editor De Regras", value:15},
+    {name:"Faturamento", value:16}
+  ]
+
+  //selecionado
+  selecionado: string = ''
+  selecionar(event:any){
+    this.selecionado = event.target.value
+    console.log(this.selecionado)
+  }
+
+  aplicar(event:any){
+    console.log("aaa")
+  }
+
+//checkboxes dos perfis
   Cadastro: Array<any> = [
     {name: 'Analista de Cadastro', value: 'Cadastro - Analista de Cadastro'},
     {name: 'Administrador', value: 'Cadastro - Administrador'},
@@ -139,10 +171,7 @@ export class CreateComponent implements OnInit {
     {name: 'Consig', value: 'Faturamento - Consig'}
   ]
 
-
-  
-
-
+  //listagem do checkbox
   onCheckboxChange(e:any){
     const perfis: FormArray = this.userForm.get('perfis') as FormArray
     console.log(perfis)
@@ -168,9 +197,7 @@ export class CreateComponent implements OnInit {
   errormsg:any;
   sucessmsg:any;
 
-
-
-  
+  //enviar 
   userSubmit(){
       if(this.userForm.valid){
         console.log(this.userForm.value)
@@ -185,8 +212,4 @@ export class CreateComponent implements OnInit {
       }
       console.log(this.userForm.value)
   }
-
-  
-   
-
 }
